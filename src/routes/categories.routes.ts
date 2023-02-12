@@ -8,7 +8,7 @@ const categoriesRepository = new CategoriesRepository();
 
 categoriesRoutes.post("/", (request, response) => {
     const { name, description } = request.body;
-
+    console.log("I have just been refreshed");
     const createCategoryService = new CreateCategoryService(
         categoriesRepository
     );

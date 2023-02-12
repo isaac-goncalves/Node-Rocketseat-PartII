@@ -1,10 +1,24 @@
-version: '3.7'
+version: "3.7"
 
 services:
+  db: 
+    image: postgres
+    hostname: database_ignite
+    container_name: database_ignite
+    restart: always
+    environment:
+      POSTGRES_USER: postgres  
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rentx
+    ports:
+      - 5432:5432
+    # volumes:
+    #   - ./postgres-data:/var/lib/postgresql/data
   app:
     build: .
     container_name: rentx
     ports:
       - 3000:3000
-      volumes:
-        - .:/usr/app
+    volumes:
+      - .:/usr/app
+    network_mode: host
