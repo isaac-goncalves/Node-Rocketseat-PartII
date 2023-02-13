@@ -1,13 +1,18 @@
+import { getRepository, Repository } from "typeorm";
 import { Category } from "../../../database/entities/Category";
 import {
     ICategoriesRepository,
     ICreateCategoryDTO,
 } from "./ICategoriesRepository";
 
+import { AppDataSource } from "../../../data-source"
+
 class CategoriesRepository implements ICategoriesRepository {
-    private categories: Category[] = [];
+    private repository = Repository<any>
+
+    // private categories: Category[] = [];
     constructor() {
-        this.categories = [];
+        this.repository = AppDataSource.getRepository(Category);
     }
 
     create({ description, name }: ICreateCategoryDTO): void {
