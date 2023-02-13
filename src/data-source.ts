@@ -8,6 +8,6 @@ export const AppDataSource = new DataSource({
   password: "postgres",
   database: "rentx",
   port: 5432,
-  migrations:   [`${__dirname}/**/migrations/*.{ts,js}`],
-  entities:   [`${__dirname}/**/entities/*.{ts,js}`],
+  migrations:   [`${__dirname}/**/database/migrations/*.{ts,js}`],
+  entities:   [`${__dirname}/**/database/entities/*.{ts,js}`],
 });
